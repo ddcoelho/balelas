@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>Posts List</h2>
+  <div class="row">
+    <% @posts.each do |post| %>
+      <%= link_to post do %>
+        <div class="col-xs-12 col-sm-4">
+          <%= render 'card', post: post %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <%= link_to "Add new post", new_post_path %>
+</div>
