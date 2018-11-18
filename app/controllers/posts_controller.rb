@@ -1,20 +1,23 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    @posts = policy_scope(Post)
   end
 
   def show
     @post = Post.find(params[:id])
+    authorize @post
   end
 
   def new
     @post = Post.new
+    authorize @post
   end
 
   def create
     @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post.user = current_user
+    authorize @post
 
     puts @post.user.email
 

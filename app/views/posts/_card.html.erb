@@ -1,4 +1,10 @@
-<div class="card">
-  <div class="card-description">
-    <h2><%= post.title %></h2>
+<div class="card p-3">
+  <div class="card-meta">
+    <p>post.user.email</p>
+  </div>
+  <%= link_to post do %>
+    <div class="card-title">
+      <h2><%= post.title %></h2>
+    </div>
+  <% end %>
 </div>

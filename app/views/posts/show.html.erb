@@ -1,5 +1,30 @@
-<h3><%= @post.title %></h3>
+<div class="content-wrapper">
+  <%= link_to "Back to list", root_path %>
+  <div class="post-wrapper">
+    <div class="post-meta">
+      <p><%= @post.user.email %></p>
+    </div>
+    <div class="post-content">
+      <h3><%= @post.title %></h3>
+      <p><%= @post.title %></p>
+    </div>
+    <%= link_to "Edit", new_post_comment_path(@post) if current_user %>
+  </div>
+    <%= link_to "Add new comment", new_post_comment_path(@post) if current_user %>
+  <div class="comments-wrapper">
+    <ul>
+      <% @post.comments.each do |comment| %>
+        <li>
+          <div class="comment-meta">
+            <%= comment.user.email %>
+          </div>
+          <div class= "comment-content">
+            <%= comment.content %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
-<p><%= @post.title %></p>
 
-<%= link_to "Back to list", root_path %>
