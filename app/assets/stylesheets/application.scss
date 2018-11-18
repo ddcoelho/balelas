@@ -14,3 +14,15 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "posts";
+
+.navbar-brand{
+  margin: 25px;
+  display: inline-block;
+  float: left;
+}
+
+.navbar-right{
+  margin: 25px;
+  display: inline-block;
+  float: right;
+}

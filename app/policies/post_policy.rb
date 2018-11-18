@@ -1,7 +1,7 @@
 class PostPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.limit(20).order("created_at desc")
     end
   end
 
@@ -13,8 +13,12 @@ class PostPolicy < ApplicationPolicy
     true
   end
 
-  def edit?
+  def update?
     record.user == user
+  end
+
+  def indexByUser?
+    true
   end
 
 end

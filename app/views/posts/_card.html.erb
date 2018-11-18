@@ -1,10 +1,30 @@
-<div class="card p-3">
-  <div class="card-meta">
-    <p>post.user.email</p>
-  </div>
-  <%= link_to post do %>
-    <div class="card-title">
-      <h2><%= post.title %></h2>
+<div class="content-wrapper container p-3">
+  <div class="row post-wrapper">
+    <div class="card-meta col-sm-3">
+      <%= link_to user_posts_path(post.user.id) do %>
+        <p><%= post.user.email %></p>
+      <% end %>
+      <%= link_to reviews_create_path(:value => 1, :post_id => post.id) do %>
+        <p>up vote</p>
+      <% end %>
+
+      <%  review_total = 0
+          post.reviews.each do |review|
+            review_total += review.value
+          end
+      %>
+
+      <p><%= review_total %></p>
+
+      <%= link_to reviews_create_path(:value => -1, :post_id => post.id) do %>
+        <p>down vote</p>
+      <% end %>
     </div>
-  <% end %>
+
+    <div class="card-title col-sm-9">
+      <%= link_to post do %>
+        <h2>Post title - <%= post.title %></h2>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,9 @@
+<div class="container">
+  <%= link_to "Back to list", root_path %>
+  <h2><%= @user.email %> - posts list</h2>
+    <% @posts.each do |post| %>
+      <div class="col-xs-12 mb-2">
+        <%= render 'card', post: post %>
+      </div>
+    <% end %>
+</div>

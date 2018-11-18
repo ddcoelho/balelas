@@ -22,12 +22,29 @@ class PostsController < ApplicationController
     puts @post.user.email
 
     if @post.save
-      puts "saved"
       redirect_to @post, notice: "Post was created"
     else
-      puts "not saved"
       render :new
     end
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+    authorize @post
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    authorize @post
+
+    redirect_to @post
+  end
+
+  def indexByUser
+    @user = User.find(params[:id])
+    @posts = @user.posts
+    authorize @posts
   end
 
   private
@@ -37,3 +54,4 @@ class PostsController < ApplicationController
   end
 
 end
+
